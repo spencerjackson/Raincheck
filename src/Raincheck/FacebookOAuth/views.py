@@ -17,4 +17,4 @@ def dance(request):
     request.session["access_token"] = access_token
     request.session["expires"] = expires
     
-    return HttpResponseRedirect("https://graph.facebook.com/me/events?access_token=%s&limit=50"%access_token)
+    return HttpResponseRedirect("/")
