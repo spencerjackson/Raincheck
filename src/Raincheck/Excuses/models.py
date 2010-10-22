@@ -5,3 +5,6 @@ from django.contrib.auth.models import User
 class Excuse(models.Model):
     text = models.TextField()
     author = models.ForeignKey(User)
+    like = models.IntegerField()
+    dislike = models.IntegerField()
+    date = models.DateTimeField()
