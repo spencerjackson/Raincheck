@@ -6,8 +6,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     # Example:
-    (r'^FBOAuth/$', 'Raincheck.FacebookOAuth.views.auth'),
-    (r'^FBOAuth/dance/?', 'Raincheck.FacebookOAuth.views.dance'),
+    (r'^FBOAuth', include('Raincheck.FacebookOAuth.urls')),
 
     (r'^accounts', include('Raincheck.Accounts.urls')),
 
