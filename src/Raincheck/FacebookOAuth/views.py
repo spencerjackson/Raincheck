@@ -10,7 +10,6 @@ def auth(request):
 
 def dance(request):
     code = request.GET["code"]
-    
     request.session["code"] = code
     url = "https://graph.facebook.com/oauth/access_token?client_id=%s&redirect_uri=http://localhost:8080/FBOAuth/dance/&client_secret=%s&code=%s"%(client_id, client_secret, code)
     data = urllib.urlopen(url).read()
