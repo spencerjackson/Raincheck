@@ -14,7 +14,8 @@ body {
 }
 
 hr {
-border-bottom: 1px solid #e4ecf7;
+border-bottom: 1px;
+color: #659EC7;
 }
 
 html, body {
