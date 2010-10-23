@@ -4,13 +4,13 @@
 		<title>{% block title %} Raincheck: The Anti-Social Network {% endblock %} </title>
 	<h1><b>Raincheck</b></h1>
 	<h2><small>The Anti-Social Network</small></h2>
+	</head>
 	<body>
-	<!--<div id="page-wrap">-->
-	<div id="content">
+	<div id="page-wrap">
 	<nav>
 		{% block navigation %}
+			
 		{% endblock %}
-		<div class="alignright">
 		{%if not authenticated %}
 			<form action="/accounts/login/" method="post">
 				{% csrf_token %}
@@ -24,16 +24,12 @@
 		{% else %}
 			<a href="/accounts/profile"> Go to your profile</a>
 		{% endif %}
-		</div>
 	</nav>
-	<hr/>
-	</head>
 	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
 	<footer> {% block footer %}
 		<p>&copy; Copyright 2010</p>
 		<p>Created by: Nohemi Fernandez, Lee Gao, Spencer Jackson, Joseph Vokt</p>
 	{% endblock %}</footer>
-	</div> <!-- #content -->
-	<!--</div> #page-wrap -->
+	</div> <!-- #page-wrap -->
 	</body>
 </html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+<a href="connect_fb">Connect to your Facebook.</a>
+<a href="connect_fbfriends">Connect to your FB friends' events.</a>
+<a href="connect_gcal">Connect to your Google Calendar.</a>
+{% for excuse in excuses %}
+	<div class="excuse">
+		<blockquote>{{excuse.text}}</blockquote>
+		<span class="author">{{excuse.author.username}}</span>
+	</div>
+{% endfor %}
+{% endblock %}

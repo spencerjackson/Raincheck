@@ -17,6 +17,7 @@
   
   <div class="mainColumn" id="login"> 
     <form action="/Gauth/" method="post">
+    	{% csrf_token %}
       <h2>Log in to access your Google Calendar</h2> 
       
       <div class="section"> 

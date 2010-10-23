@@ -87,7 +87,5 @@ INSTALLED_APPS = (
     'Raincheck.Locations',
     'Raincheck.Accounts'
 )
-import os
-STATICFILES_ROOT = os.path.abspath('./media')
 
 TEMPLATE_CONTEXT_PROCESSORS = ('Raincheck.context_processor.authentication_context', 'django.contrib.auth.context_processors.auth')

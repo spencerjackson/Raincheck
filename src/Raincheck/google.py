@@ -2,13 +2,16 @@ import gdata.calendar.service, time
 from django.http import HttpResponse, HttpResponseRedirect
 import json
 
-def validate(fn):
-    def wrapper(request):
-        if not request.session.get("guser", False):
-            return HttpResponseRedirect("/Gauth/")
-        else:
-            return fn(request)
-    return wrapper
+def validate(redirect = "/"):
+    def wrapper2(fn):
+        def wrapper(request):
+            if not request.session.get("guser", False):
+                request.session["redirect"] = redirect
+                return HttpResponseRedirect("/Gauth/")
+            else:
+                return fn(request)
+        return wrapper
+    return wrapper2
 
 def GetCalendar(username, password):
     calendar_service = gdata.calendar.service.CalendarService()
