@@ -72,15 +72,20 @@ TEMPLATE_DIRS = (
     'templates'
 )
 
+# User Profile object
+AUTH_PROFILE_MODULE = 'Accounts.UserProfile'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'Raincheck.Excuses',
     'Raincheck.Events',
-    'Raincheck.Locations'
+    'Raincheck.Locations',
+    'Raincheck.Accounts'
 )
 import os
 STATICFILES_ROOT = os.path.abspath('./media')

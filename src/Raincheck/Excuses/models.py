@@ -10,7 +10,7 @@ class Excuse(models.Model):
 	('F', 'Funny')
     )
     text = models.TextField()
-    excuse = models.CharField(max_length=1, choices=TYPE_OF_EXCUSE)
+    type = models.CharField(max_length=1, choices=TYPE_OF_EXCUSE)
     author = models.ForeignKey(User)
     like = models.IntegerField()
     dislike = models.IntegerField()
