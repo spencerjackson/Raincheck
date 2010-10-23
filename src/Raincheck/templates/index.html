@@ -3,7 +3,8 @@
 
 {% for excuse in excuses.object_list %}
 	<div class="entry">
-		<a href="#">{{excuse.text}}</a>
+		<a href="#">{{excuse.text}}</a> <br/>
+		<a style="margin-right: 2.5em;"href="/excuse/{{excuse.pk}}/like">Like</a><a href="/excuse/{{excuse.pk}}/dislike">Dislike</a>
 	</div>
 {% endfor %}
 	<span class="step-links">
