@@ -10,8 +10,10 @@ urlpatterns = patterns('',
 
     (r'^accounts', include('Raincheck.Accounts.urls')),
 
-    (r'^$', 'Raincheck.views.index'),
-
+    (r'^/?$', 'Raincheck.views.index'),
+    
+    (r'', include('Raincheck.GAuth.urls')),
+    
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
