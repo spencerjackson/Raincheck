@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     (r'connect_fb/$', "Raincheck.Accounts.views.connect_fb"),
     (r'connect_gcal/$', "Raincheck.Accounts.views.connect_gcal"),
     (r'connect_fbfriends/$', "Raincheck.Accounts.views.connect_fbfriends"),
+    (r'conflict/(?P<event_id>\d+)/?$', "Raincheck.Accounts.views.conflict")
 )
 

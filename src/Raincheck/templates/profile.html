@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block head %}
+<script src="/static/jquery/jquery-1.4.3.min.js" type="text/javascript"></script>
+<script src="/static/jquery/jquery-ui-1.8.5.custom.min.js" type="text/javascript"></script>
+<script src="/static/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+<script src="/static/fullcalendar/gcal.js" type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/redmond/jquery-ui.css' />
+<link rel='stylesheet' type='text/css' href='/static/fullcalendar/fullcalendar.css' />
+
+<style type="text/css">
+	.fb a{
+		background-color: #1D4088 !important;
+		color: #D8DFEA !important;
+	}
+	.fb-friends a{
+		background-color: #9E332E !important;
+		color: #D8DFEA !important;
+	}
+	.gcal a{
+		background-color: #233232 !important;
+		color: #D8DFEA !important;
+	}
+	#calendar {
+		margin: 0 auto;
+		}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+		theme:true,
+		header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+		},
+		editable: true,
+		events: [
+			{% for event in events %}
+			{
+				title: "{{event.title|truncatewords:5}}",
+				start: {{event.start_date}},
+				end: {{event.end_date}},
+				class: "{{event.provider}}",
+				eid: "{{event.id}}",
+			},
+			{% endfor %}
+		],
+		eventRender: function(event, element){
+			$(element).addClass(event.class);
+		},
+		eventClick: function(event, jsEvent, view) {
+	
+	        jQuery.get( "/account/conflict/"+event.eid+"/", function(data){
+	        	alert(data);
+	        })
+	
+	    }
+		
+    })
+
+});
+</script>
+{% endblock %}
+{% block content %}
+
+<div class="entry">
+	<div id = "calendar">
+		
+	</div>
+</div>
+<div class="postBottom">
+<a href="connect_fb">Connect to your Facebook.</a> </br>
+<a href="connect_fbfriends">Connect to your FB friends' events.</a> </br>
+<a href="connect_gcal">Connect to your Google Calendar.</a>
+</div>
+
+{% endblock %}

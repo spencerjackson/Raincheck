@@ -11,7 +11,7 @@ class Event(models.Model):
     creator = models.ForeignKey(User)
     provider = models.CharField(max_length=200)
     def __str__(self):
-     return title+" at "+location+" by "+creator.username
+        return self.title
     def start_date(self):
         return "new Date(%s,%s,%s)"%(self.start_time.year, self.start_time.month-1, self.start_time.day)
     def end_date(self):

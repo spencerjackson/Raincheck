@@ -20,6 +20,8 @@ class Excuse(models.Model):
       return self.likedBy.count()
     def get_disliked(self):
       return self.dislikedBy.count()
+    def get_permalink(self):
+      return "/excuse/"+str(self.id)+"/"
 
 class ExcuseVote(models.Model):
     user = models.OneToOneField(User, primary_key=True)

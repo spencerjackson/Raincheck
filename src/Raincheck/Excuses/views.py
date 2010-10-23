@@ -22,6 +22,7 @@ def vote(request, excuseID, excuse_is_liked):
 	#ExcuseVote.objects.filter(excuse__is=excuse).count()
 	return render_to_response('vote.html', {'excuse' : excuse, 'liked' : excuse.get_liked(),'disliked' : excuse.get_disliked()}, context_instance=RequestContext(request))
 
+@login_required
 def create(request):
 	if request.method == 'POST':
 		form = ExcuseForm(request.POST)
@@ -37,3 +38,7 @@ def create(request):
 		'form' : form
 	}, context_instance=RequestContext(request))
 
+
+def single(request, id):
+	excuse = Excuse.objects.get(id = id)
+	return render_to_response("single.html", locals())

@@ -91,8 +91,10 @@
 
 				position:static;
 				background-color:#E6E6E6;
-				height:50px;
+				height:30px;
 				border:solid 1px #ccc;
+				padding:10px;
+				color:#555;
 			}
 			#content a{
 				color:#1D8AC3;
@@ -123,6 +125,7 @@
 				margin-top:-5px;
 
 				border:solid 3px #ccc;
+				line-height:30px;
 			}
 			#userinfo input{
 				padding:10px;
@@ -162,7 +165,8 @@
 				<input type="submit" value="login" />
 			</form>
 			{% else %}
-			<a href="/account/profile"> Go to your profile</a>
+			<a href="/account/profile"> Go to your profile</a><p></p>
+			<a href="/account/logout"> Log Out</a>
 		{% endif %}
 		</div>
 		<div id = "content">
