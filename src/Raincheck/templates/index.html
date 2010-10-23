@@ -9,11 +9,13 @@
 
 <p>This project was designed as an entry to the 2010 Yahoo! HackU Competition.</p>
 </div>
+<br/>
+<br/>
 <div class="clear"></div>
 {% for excuse in excuses.object_list %}
 	<div class="entry">
 	<a href="{{excuse.get_permalink}}">{{excuse.text}}</a> <br/>
-		<a style="margin-right: 2.5em;"href="/excuse/{{excuse.pk}}/like">Like</a><a href="/excuse/{{excuse.pk}}/dislike">Dislike</a>
+		<a style="margin-right: 2.5em;"href="/excuse/{{excuse.pk}}/like">Like({{excuse.get_liked}})</a><a href="/excuse/{{excuse.pk}}/dislike">Dislike({{excuse.get_disliked}})</a>
 	</div><div class="postBottom">
 
 </div>
