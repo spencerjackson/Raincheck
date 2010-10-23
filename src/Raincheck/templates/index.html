@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<img>Insert image here </img>
+<p> <i>RainCheck</i> is a scheduling and "social avoidance" application which integrates Google Calendar with Facebook Events to provide the optimal excuse for why you aren't going to that event you'd rather miss. In the unfortunate case your schedule shows no direct conflict with the event to be avoided, <i>RainCheck</i> equips you with a hefty array of excuses ranked and submitted by other users. </p>
+
+
+<p>This project was designed as an entry to the 2010 Yahoo! HackU Competition.</p>
+
+<section>
+<h3>A sample of our user supplied responses</h3>
+{% for excuse in excuses.object_list %}
+	<div class="excuse">
+		<blockquote>{{excuse.text}}</blockquote>
+		<span class="author">{{excuse.author.username}}</span>
+	</div>
+{% endfor %}
+<div class="pagination">
+	<span class="step-links">
+		{% if excuses.has_previous %}
+			<a href="?page={{ excuses.previous_page_number }}">previous</a>
+		{% endif %}
+
+		<span class="current">
+			Page {{ excuses.number }} of {{ excuses.paginator.num_pages }}.
+		</span>
+
+		{% if excuses.has_next %}
+			<a href="?page={{ excuses.next_page_number }}">next</a>
+		{% endif %}
+	</span>
+
+</div>
+{% endblock %}
