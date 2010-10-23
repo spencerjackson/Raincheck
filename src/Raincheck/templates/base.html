@@ -36,7 +36,7 @@
 			#content{
 				margin-left: 256px;
 				margin-right: 557px;
-				
+
 				clear:both;
 			}
 			#sign-up{
@@ -83,12 +83,12 @@
 				-webkit-border-radius-bottomleft: 10px;
 			    -khtml-border-radius-bottomleft: 10px;
 			    border-radius-bottomleft: 10px;
-				
+
 				-moz-border-radius-bottomright:10px;
 				-webkit-border-radius-bottomright: 10px;
 			    -khtml-border-radius-bottomright: 10px;
 			    border-radius-bottomright: 10px;
-				
+
 				position:static;
 				background-color:#E6E6E6;
 				height:50px;
@@ -111,17 +111,17 @@
 				position:absolute;
 				right:267px;
 				font-family:"Arial Rounded MT Bold";
-				
+
 				-moz-border-radius:10px;
 				-webkit-border-radius: 10px;
 			    -khtml-border-radius: 10px;
 			    border-radius: 10px;
-				
+
 				color:#fff;
 				background-color:#333333;
 				padding:20px;
 				margin-top:-5px;
-				
+
 				border:solid 3px #ccc;
 			}
 			#userinfo input{
@@ -141,32 +141,37 @@
 			<h1 id="head" class="typeface-js"><a href="/">RainCheck</a></h1>
 			<div id = "sign-up">
 				<a class="sign-in-link" href="#"><span class="sign-in-button">The anti-social network.</span></a>
-				
+
 			</div>
 		</div>
 		<div class="clear"></div>
 		<div id = "userinfo">
 			{%if not authenticated %}
-				<form action="/account/login/" method="post"> 
+				<a href="/account/new_account"><b>Create an account <b/></a>
+				<br/>
+				<br/>
+				<p> Sign in to your account </p>
+				<br/>
+				<form action="/account/login/" method="post">
 				{% csrf_token %}
-				<label for="username">Username: </label> 
-				<input text="text" name="username" id="username"\> 
-				<label for="password">Password: </label> 
-				<input text="text" name="password" type="password" id="password"\> 
- 
-				<input type="submit" value="login" /> 
-			</form> 
+				<label for="username">Username: </label>
+				<input text="text" name="username" id="username"\>
+				<label for="password">Password: </label>
+				<input text="text" name="password" type="password" id="password"\>
+
+				<input type="submit" value="login" />
+			</form>
 			{% else %}
 			<a href="/account/profile"> Go to your profile</a>
 		{% endif %}
 		</div>
 		<div id = "content">
 			{% block content %}
-			
+
 			{% endblock %}
 		</div>
 		{% block postcontent %}
-		
+
 		{% endblock %}
 	</body>
 </html>
