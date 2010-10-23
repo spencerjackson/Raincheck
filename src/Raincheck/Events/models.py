@@ -9,7 +9,7 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     creator = models.ForeignKey(User)
-    location = models.ForeignKey(Locations)
+    location = models.CharField(max_length=200)
     provider = models.CharField(max_length=200)
     def __str__(self):
      return title+" at "+location+" by "+creator.username
