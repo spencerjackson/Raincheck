@@ -127,7 +127,23 @@
 				border:solid 3px #ccc;
 				line-height:30px;
 			}
-			#userinfo input{
+			.dark {
+			font-family:"Arial Rounded MT Bold";
+				
+				-moz-border-radius:10px;
+				-webkit-border-radius: 10px;
+			    -khtml-border-radius: 10px;
+			    border-radius: 10px;
+				
+				color:#fff;
+				background-color:#333333;
+				padding:20px;
+				margin-top:-5px;
+				
+				border:solid 3px #ccc;
+				line-height:30px;
+			}
+			.dark input, #userinfo input{
 				padding:10px;
 				margin:10px;
 			}
@@ -150,6 +166,10 @@
 		<div class="clear"></div>
 		<div id = "userinfo">
 			{%if not authenticated %}
+			<a href="/account/new_account"><b>Create an account <b/></a>
+				<br/>
+				<br/>
+			
 				<form action="/account/login/" method="post"> 
 				{% csrf_token %}
 				<label for="username">Username: </label> 

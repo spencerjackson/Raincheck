@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from Raincheck.Events.models import *
 import datetime
 import random, json
+from django.contrib import auth
 
 def normalize(date):
     if not isinstance(date, str): return date
@@ -115,3 +116,13 @@ def profile(request):
     #print dir(request.user)
     events = Event.objects.filter(creator = request.user)
     return render_to_response('profile.html', {"session": request.session, "events":events}, context_instance=RequestContext(request))
+
+
+def create_account(request):
+    if request.method == 'POST':
+        user = User.objects.create_user(username = request.POST['username'], password=request.POST['password2'], email=request.POST['email'])
+        user.save()
+        
+        #auth.login(request, user)    
+        return HttpResponseRedirect('/account/profile')
+    return render_to_response('new_account.html', {}, context_instance=RequestContext(request))
