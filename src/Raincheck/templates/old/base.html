@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/static/style.css" type="text/css" media=screen />
+		{% block stylesheets %} {% endblock %}
+		<title>{% block title %} Raincheck: The Anti-Social Network {% endblock %} </title>
+		{% block head %}
+
+		{% endblock %}
+	</head>
+	<body>
+	<div id="page-wrap">
+	<nav>
+        	<h1><b>Raincheck</b></h1>
+        	<h2><small>The Anti-Social Network</small></h2>
+		{% block navigation %}
+		{% endblock %}
+		{%if not authenticated %}
+			<form action="/account/login/" method="post">
+				{% csrf_token %}
+				<label for="username">Username: </label>
+				<input text="text" name="username" id="username"\>
+				<label for="password">Password: </label>
+				<input text="text" name="password" type="password" id="password"\>
+
+				<input type="submit" value="login" />
+			</form>
+		{% else %}
+			<a href="/account/profile"> Go to your profile</a>
+		{% endif %}
+	</nav>
+	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
+	<footer> {% block footer %}
+		<p>&copy; Copyright 2010</p>
+		<p>Created by: Nohemi Fernandez, Lee Gao, Spencer Jackson, Joseph Vokt</p>
+	{% endblock %}</footer>
+	</div> <!-- #page-wrap -->
+	</body>
+</html>
