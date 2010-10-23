@@ -93,13 +93,22 @@ def connect_gcal(request):
     return HttpResponse(gcal)
 
 def convert_event(event):
-    return {"name":event.title, "start_time":event.start_time, "end_time":event.end_time}
+    return {"name":event.title, "start_time":event.start_time, "end_time":event.end_time, "event":event}
+
+def date_to_json(date):
+    return "new Date(%s, %s, %s, %s, %s, %s)"%(date.year, date.month, date.day, date.hour, date.minute, date.second)
 
 def conflict(request, event_id):
     events = [convert_event(e) for e in Event.objects.filter(creator = request.user)]
     avoid = convert_event(Event.objects.get(id=event_id))
     conflist = conflicts(events, avoid)
-    return HttpResponse(str(conflist))
+    if avoid in conflist:
+        conflist.remove(avoid)
+    for event in conflist:
+        event["start_time"] = date_to_json(event["start_time"])
+        event["end_time"] = date_to_json(event["end_time"])
+        del event["event"]
+    return HttpResponse(json.dumps(conflist))
 
 @login_required
 def profile(request):
