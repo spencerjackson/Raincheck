@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="entry dark">
+	<img src = "/static/pandaRaincheckFinal.jpg"/>
+</div>
+<div class="postBottom">
+Raincheck is an anti-social web application that helps disgruntled people by compiling what may become the world's most comprehensive library of crappy excuses. This is actually an application submitted to the Yahoo HackU competition, enjoy.
+</div>
+
 {% for excuse in excuses.object_list %}
 	<div class="entry">
 		<a href="#">{{excuse.text}}</a>
