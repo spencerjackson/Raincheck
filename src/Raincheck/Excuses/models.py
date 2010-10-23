@@ -16,3 +16,5 @@ class Excuse(models.Model):
     like = models.IntegerField()
     dislike = models.IntegerField()
     date = models.DateTimeField()
+    def __str__(self):
+      return self.author.username+" "+self.date.__str__()
