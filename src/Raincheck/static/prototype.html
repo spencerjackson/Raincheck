@@ -1,0 +1,176 @@
+<html>
+	<head>
+		<link href="reset.css" rel="stylesheet"/>
+		<style type="text/css">
+			body{
+				background-color:#E6E6E6;
+			}
+			.clear{
+				margin-top:30px;
+			}
+			#top{
+				background-image: url(bg-gradient.png);
+				background-repeat:no-repeat;
+				background-position-x:center;
+				background-color:#333;
+				height:100px;
+				border-bottom:solid 1px #444;
+				clear:both;
+			}
+			#head{
+				color:#fff;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:60px;
+				letter-spacing:-3px;
+				float:left;
+				margin-left: 266px;
+				padding-top:30px;
+			}
+			#head a{
+				color:#fff;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:60px;
+				letter-spacing:-3px;
+				text-decoration:none;
+			}
+			#content{
+				margin-left: 256px;
+				margin-right: 557px;
+				
+				clear:both;
+			}
+			#sign-up{
+				float:right;
+				margin-left: 0px;
+				margin-right: 287px;
+				padding-top: 50px;
+			}
+			.sign-in-link{
+				color:#fff;
+				text-decoration:none;
+			}
+			a .sign-in-button{
+				-moz-border-radius: 5px;
+			    -webkit-border-radius: 5px;
+			    -khtml-border-radius: 5px;
+			    border-radius: 5px;
+				background-color:#6C6C6C;
+				padding:5px;
+				font-family:Arial, Helvetica, sans-serif;
+				color:#ffffff;
+				border: solid 5px #777777;
+				-moz-outline:none;
+			}
+				a{
+					color:#fff;
+					text-decoration:none;
+					-moz-outline:none;
+				}
+				a:hover .sign-in-button{
+					text-shadow: 0px 0px 20px #1D8AC3;
+					-moz-outline:none;
+				}
+			.entry{
+				background-color:#fafafa;
+				background-image: url(bg-post.png);
+				background-repeat:repeat-x;
+				border:solid 1px #ddd;
+				border-top: solid 2px #ddd;
+				padding:30px;
+			}
+			.postBottom{
+				-moz-border-radius-bottomleft:10px;
+				-webkit-border-radius-bottomleft: 10px;
+			    -khtml-border-radius-bottomleft: 10px;
+			    border-radius-bottomleft: 10px;
+				
+				-moz-border-radius-bottomright:10px;
+				-webkit-border-radius-bottomright: 10px;
+			    -khtml-border-radius-bottomright: 10px;
+			    border-radius-bottomright: 10px;
+				
+				position:static;
+				background-color:#E6E6E6;
+				height:50px;
+				border:solid 1px #ccc;
+			}
+			#content a{
+				color:#1D8AC3;
+				font-family:"Arial Rounded MT Bold";
+				font-size:20px;
+				text-decoration:none;
+				text-shadow: 0px 0px 6px #1D8AC3;
+			}
+			.alt a{
+				color:#E41E19 !important;
+				text-shadow: 0px 0px 6px #E41E19 !important;
+			}
+			#userinfo{
+				margin-left: 287px;
+				float: right;
+				position:absolute;
+				right:267px;
+				font-family:"Arial Rounded MT Bold";
+				
+				-moz-border-radius:10px;
+				-webkit-border-radius: 10px;
+			    -khtml-border-radius: 10px;
+			    border-radius: 10px;
+				
+				color:#fff;
+				background-color:#333333;
+				padding:20px;
+				margin-top:-5px;
+				
+				border:solid 3px #ccc;
+			}
+			#userinfo input{
+				padding:10px;
+				margin:10px;
+			}
+			input{
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "top">
+			<h1 id="head" class="typeface-js"><a href="/">RainCheck</a></h1>
+			<div id = "sign-up">
+				<a class="sign-in-link" href="#"><span class="sign-in-button">The anti-social network.</span></a>
+				
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id = "userinfo">
+				<form action="/account/login/" method="post"> 
+				<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='4250c25a8f9855003451f516097f6cef' /></div> 
+				<label for="username">Username: </label> 
+				<input text="text" name="username" id="username"\> 
+				<label for="password">Password: </label> 
+				<input text="text" name="password" type="password" id="password"\> 
+ 
+				<input type="submit" value="login" /> 
+			</form> 
+			</div>
+		<div id = "content">
+			
+			<div class="entry">
+				<a href="#">Sorry officer, I was taking advantage of the fact that there were no goats on the road.</a>
+			</div>
+			<div class="postBottom">
+				
+			</div>
+		</div>
+		</div>
+		<div class="clear"></div>
+		<div id = "content">
+			<div class="entry alt">
+				<a href="#">Sorry officer, I was taking advantage of the fact that there were no goats on the road.</a>
+			</div>
+			<div class="postBottom">
+				
+			</div>
+		</div>
+	</body>
+</html>
