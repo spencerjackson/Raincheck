@@ -132,9 +132,6 @@
 				display:block;
 			}
 		</style>
-		{% block head %}
-
-		{% endblock %}
 	</head>
 	<body>
 		<div id = "top">
@@ -146,9 +143,8 @@
 		</div>
 		<div class="clear"></div>
 		<div id = "userinfo">
-			{%if not authenticated %}
 				<form action="/account/login/" method="post"> 
-				{% csrf_token %}
+				<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='4250c25a8f9855003451f516097f6cef' /></div> 
 				<label for="username">Username: </label> 
 				<input text="text" name="username" id="username"\> 
 				<label for="password">Password: </label> 
@@ -156,17 +152,25 @@
  
 				<input type="submit" value="login" /> 
 			</form> 
-			{% else %}
-			<a href="/account/profile"> Go to your profile</a>
-		{% endif %}
-		</div>
+			</div>
 		<div id = "content">
-			{% block content %}
 			
-			{% endblock %}
+			<div class="entry">
+				<a href="#">Sorry officer, I was taking advantage of the fact that there were no goats on the road.</a>
+			</div>
+			<div class="postBottom">
+				
+			</div>
 		</div>
-		{% block postcontent %}
-		
-		{% endblock %}
+		</div>
+		<div class="clear"></div>
+		<div id = "content">
+			<div class="entry alt">
+				<a href="#">Sorry officer, I was taking advantage of the fact that there were no goats on the road.</a>
+			</div>
+			<div class="postBottom">
+				
+			</div>
+		</div>
 	</body>
 </html>

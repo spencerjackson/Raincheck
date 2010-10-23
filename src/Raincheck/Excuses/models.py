@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ModelForm, Textarea
+from django import forms
 # Create your models here.
 class Excuse(models.Model):
     TYPE_OF_EXCUSE = (
@@ -27,6 +28,5 @@ class ExcuseVote(models.Model):
     def __str__(self):
       return self.user.username
 
-class ExcuseForm(ModelForm):
-	class Meta:
-		model = Excuse
+class ExcuseForm(forms.Form):
+	text = forms.CharField()

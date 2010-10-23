@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
-    (r'^FBOAuth', include('Raincheck.FacebookOAuth.urls')),
+    (r'^FBOAuth/$', 'Raincheck.FacebookOAuth.views.auth'),
+    (r'^FBOAuth/dance/?', 'Raincheck.FacebookOAuth.views.dance'),
 
     (r'^account', include('Raincheck.Accounts.urls')),
 

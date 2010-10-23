@@ -25,8 +25,8 @@ def vote(request, excuseID, excuse_is_liked):
 def create(request):
 	if request.method == 'POST':
 		form = ExcuseForm(request.POST)
-		if form.is_valid():
-			form.save()
+		excuse = Excuse(text = request.POST["excuse"], type = "F", author = request.user)
+		excuse.save()
 		return render_to_response('create.html',{
 		'form' : form
 	}, context_instance=RequestContext(request))
