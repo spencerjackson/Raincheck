@@ -1,10 +1,66 @@
 {% extends "base.html" %}
+{% block head %}
+<style type="text/css">
+	.fb a{
+		background-color: #1D4088 !important;
+		color: #D8DFEA !important;
+	}
+	.fb-friends a{
+		background-color: #9E332E !important;
+		color: #D8DFEA !important;
+	}
+	.gcal a{
+		background-color: #233232 !important;
+		color: #D8DFEA !important;
+	}
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+		theme:true,
+		header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+		},
+		editable: true,
+		events: [
+			{% for event in events %}
+			{
+				title: "{{event.title|truncatewords:5}}",
+				start: {{event.start_date}},
+				end: {{event.end_date}},
+				class: "{{event.provider}}",
+			},
+			{% endfor %}
+		],
+		eventRender: function(event, element){
+			$(element).addClass(event.class);
+		}
+    })
+
+});
+</script>
+{% endblock %}
+
 {% block content %}
 <section>
 <a href="connect_fb">Connect to your Facebook.</a>
 <a href="connect_fbfriends">Connect to your FB friends' events.</a>
 <a href="connect_gcal">Connect to your Google Calendar.</a>
+<div id = "calendar">
+		
+	</div>
 {% for excuse in excuses %}
+	
 	<div class="excuse">
 		<blockquote>{{excuse.text}}</blockquote>
 		<span class="author">{{excuse.author.username}}</span>

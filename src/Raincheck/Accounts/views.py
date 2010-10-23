@@ -83,6 +83,8 @@ def connect_gcal(request):
         
     return HttpResponse(gcal)
 
+@login_required
 def profile(request):
     #print dir(request.user)
-    return render_to_response('profile.html', {"session": request.session}, context_instance=RequestContext(request))
+    events = Event.objects.filter(creator = request.user)
+    return render_to_response('profile.html', {"session": request.session, "events":events}, context_instance=RequestContext(request))
