@@ -9,8 +9,8 @@
 	<nav>
         	<h1><b>Raincheck</b></h1>
         	<h2><small>The Anti-Social Network</small></h2>
-		{% block navigation 
-		{% endblock 
+		{% block navigation %} 
+		{% endblock %}
 		{%if not authenticated %}
 			<form action="/accounts/login/" method="post">
 				{% csrf_token %}
