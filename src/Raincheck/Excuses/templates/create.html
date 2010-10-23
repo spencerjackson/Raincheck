@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+	{% if form.subject.errors %}
+	<ol>
+		{% for error in form.subject.errors %}
+		<li><strong>{{error|escape }}</strong></li>
+		{% endfor %}
+	</ol>
+	{% endif %}
+	<form action="" method="post">
+	{% csrf_token %}
+	<label for="excuse">Excuse:</label>
+	<input type="text" name="excuse" value="" id="username">
+
+	<input type="submit" name="send" value="Send" />
+	</form>
+{% endblock %}
