@@ -4,9 +4,8 @@
 	<form action="" method="post">
 	{% csrf_token %}
 	<label for="excuse">Excuse:</label>
-	<input type="text" name="excuse" value="" id="username">
+	<input type="textarea" name="excuse" value="" id="username">
 
 	<input type="submit" name="send" value="Submit" />
-	<input type="hidden" name="next" value="{{ next|escape }}" />
 	</form>
 {% endblock %}
