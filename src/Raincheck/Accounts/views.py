@@ -4,7 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from Raincheck import google, facebook
 from django.contrib.auth.decorators import login_required
 from Raincheck.Events.models import *
-from Raincheck.Locations.models import *
 import datetime
 import random
 
@@ -21,7 +20,6 @@ def connect_fb(request):
                                             start_time = normalize(e["start_time"]),
                                             end_time = normalize(e["end_time"]),
                                             creator = request.user,
-                                            location = Locations.objects.get_or_create(location = e["location"] if "location" in e else "")[0],
                                             provider = "fb",
                                             description = e["name"],
                                             )[0]
@@ -50,7 +48,6 @@ def connect_fbfriends(request):
                                                 start_time = normalize(e["start_time"]),
                                                 end_time = normalize(e["end_time"]),
                                                 creator = request.user,
-                                                location = Locations.objects.get_or_create(location = e["location"] if "location" in e else "")[0],
                                                 provider = "fb-friends",
                                                 description = e["name"],
                                                 )
@@ -68,7 +65,6 @@ def connect_gcal(request):
                                             start_time = normalize(e["start_time"]),
                                             end_time = normalize(e["end_time"]),
                                             creator = request.user,
-                                            location = Locations.objects.get_or_create(location = e["location"] if "location" in e else "")[0],
                                             provider = "gcal",
                                             description = e["name"],
                                             )[0]

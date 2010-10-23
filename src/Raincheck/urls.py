@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     (r'^/?$', 'Raincheck.views.index'),
     
     (r'^excuse', include('Raincheck.Excuses.urls')),
+    (r'^event', include('Raincheck.Events.urls')),
 
     (r'', include('Raincheck.GAuth.urls')),
     
