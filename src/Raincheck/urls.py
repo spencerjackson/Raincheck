@@ -12,15 +12,15 @@ urlpatterns = patterns('',
     (r'^account', include('Raincheck.Accounts.urls')),
 
     (r'^/?$', 'Raincheck.views.index'),
-    
+
     (r'^excuse', include('Raincheck.Excuses.urls')),
-    (r'^event', include('Raincheck.Events.urls')),
+    #(r'^event', include('Raincheck.Events.urls')),
 
     (r'', include('Raincheck.GAuth.urls')),
-    
+
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.path.abspath("./static")}),
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

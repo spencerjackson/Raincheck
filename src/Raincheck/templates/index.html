@@ -13,7 +13,7 @@ Raincheck is an anti-social web application that helps disgruntled people by com
 {% for excuse in excuses.object_list %}
 	<div class="entry">
 	<a href="{{excuse.get_permalink}}">{{excuse.text}}</a> <br/>
-		<a style="margin-right: 2.5em;"href="/excuse/{{excuse.pk}}/like">Like</a><a href="/excuse/{{excuse.pk}}/dislike">Dislike</a>
+		<a style="margin-right: 2.5em;"href="/excuse/{{excuse.pk}}/like">Like({{excuse.get_liked}})</a><a href="/excuse/{{excuse.pk}}/dislike">Dislike({{excuse.get_disliked}})</a>
 	</div><div class="postBottom">
 
 </div>
