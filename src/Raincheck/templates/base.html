@@ -10,7 +10,7 @@
 		{% block navigation %} 
 			<img src="/static/raincheck.png"/>
 		{% endblock %}
-		{%if authenticated %}
+		{%if not authenticated %}
 			<form action="/accounts/login/" method="post">
 				{% csrf_token %}
 				<label for="username">Username: </label>
@@ -20,6 +20,8 @@
 
 				<input type="submit" value="login" />
 			</form>
+		{% else %}
+			<a href="/accounts/profile"> Go to your profile</a>
 		{% endif %}
 	</nav>
 	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
