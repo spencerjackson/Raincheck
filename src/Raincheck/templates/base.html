@@ -1,16 +1,16 @@
 <html>
 	<head>
-	<link rel="stylesheet" href="/static/style.css" type="text/css" media=screen />
+		<link rel="stylesheet" href="/static/style.css" type="text/css" media=screen />
+		{% block stylesheets %} {% endblock %}
 		<title>{% block title %} Raincheck: The Anti-Social Network {% endblock %} </title>
-	<h1><b>Raincheck</b></h1>
-	<h2><small>The Anti-Social Network</small></h2>
 	</head>
 	<body>
 	<div id="page-wrap">
 	<nav>
-		{% block navigation %}
-			
-		{% endblock %}
+        	<h1><b>Raincheck</b></h1>
+        	<h2><small>The Anti-Social Network</small></h2>
+		{% block navigation 
+		{% endblock 
 		{%if not authenticated %}
 			<form action="/accounts/login/" method="post">
 				{% csrf_token %}
