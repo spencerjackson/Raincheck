@@ -4,17 +4,15 @@
 		{% block stylesheets %} {% endblock %}
 		<title>{% block title %} Raincheck: The Anti-Social Network {% endblock %} </title>
 		{% block head %}
-		
+
 		{% endblock %}
 	</head>
 	<body>
-	<h1><b>Raincheck</b></h1>
-	<h2><small>The Anti-Social Network</small></h2>
 	<div id="page-wrap">
 	<nav>
         	<h1><b>Raincheck</b></h1>
         	<h2><small>The Anti-Social Network</small></h2>
-		{% block navigation %} 
+		{% block navigation %}
 		{% endblock %}
 		{%if not authenticated %}
 			<form action="/account/login/" method="post">
