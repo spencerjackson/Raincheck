@@ -10,7 +10,8 @@ urlpatterns = patterns('',
     (r'^FBOAuth/dance/?', 'Raincheck.FacebookOAuth.views.dance'),
     
     (r'^/?$', 'Raincheck.views.index'),
-    
+    (r'^accounts', include('Raincheck.Accounts.urls')),
+
     (r'', include('Raincheck.GAuth.urls')),
     
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
