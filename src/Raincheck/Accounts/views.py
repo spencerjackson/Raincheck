@@ -7,6 +7,7 @@ from Raincheck.Events.models import *
 from django.contrib import auth
 import datetime
 import random, json
+from django.contrib import auth
 
 def normalize(date):
     if not isinstance(date, str): return date
@@ -94,13 +95,22 @@ def connect_gcal(request):
     return HttpResponse(gcal)
 
 def convert_event(event):
-    return {"name":event.title, "start_time":event.start_time, "end_time":event.end_time}
+    return {"name":event.title, "start_time":event.start_time, "end_time":event.end_time, "event":event}
+
+def date_to_json(date):
+    return "new Date(%s, %s, %s, %s, %s, %s)"%(date.year, date.month, date.day, date.hour, date.minute, date.second)
 
 def conflict(request, event_id):
     events = [convert_event(e) for e in Event.objects.filter(creator = request.user)]
     avoid = convert_event(Event.objects.get(id=event_id))
     conflist = conflicts(events, avoid)
-    return HttpResponse(str(conflist))
+    if avoid in conflist:
+        conflist.remove(avoid)
+    for event in conflist:
+        event["start_time"] = date_to_json(event["start_time"])
+        event["end_time"] = date_to_json(event["end_time"])
+        del event["event"]
+    return HttpResponse(json.dumps(conflist))
 
 @login_required
 def profile(request):
@@ -109,12 +119,8 @@ def profile(request):
     return render_to_response('profile.html', {"session": request.session, "events":events}, context_instance=RequestContext(request))
 
 def create_account(request):
-
 	if request.method == 'POST':
 		user = User.objects.create_user(username = request.session['username'], password=request.session['password2'])
 		user.save()
-		
-		auth.login(request, user)	
 		return redirect('/account/profile')
 	return render_to_response('new_account.html', {}, context_instance=RequestContext(request))
-

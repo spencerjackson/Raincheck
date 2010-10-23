@@ -1,8 +1,12 @@
 {% extends "base.html" %}
-{% block "content" %}
+{% block content %}
+<div class = "entry dark">
 <form action="" method="POST">
+{% csrf_token %}
 	<label for="username">Enter your desired username</label>
 	<input type="text" name="username" value="" id="username"/>
+	<label for="email">Enter your email</label>
+	<input type="text" name="email" value="" id="email"/>
 	<label for="password1">Enter your password</label>
 	<input type="password" name="password1" value="" id="password1"/>
 	<label for="password2">Please reenter your password</label>
@@ -10,4 +14,5 @@
 
 	<input type="submit" value="login" />
 </form>
+</div>
 {% endblock %}

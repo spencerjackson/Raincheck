@@ -5,11 +5,13 @@ urlpatterns = patterns('',
     # existing patterns here...
     (r'login/$',  login, {'template_name': 'login.html'}),
     (r'logout/$', logout),
-    (r'new_account/$', 'Accounts.views.create_account'),
     (r'profile/$', "Raincheck.Accounts.views.profile"),
     (r'connect_fb/$', "Raincheck.Accounts.views.connect_fb"),
     (r'connect_gcal/$', "Raincheck.Accounts.views.connect_gcal"),
     (r'connect_fbfriends/$', "Raincheck.Accounts.views.connect_fbfriends"),
-    (r'conflict/(?P<event_id>\d+)/?$', "Raincheck.Accounts.views.conflict")
+    (r'conflict/(?P<event_id>\d+)/?$', "Raincheck.Accounts.views.conflict"),
+    (r'new_account/?$', 'Raincheck.Accounts.views.create_account'),
+    
+    (r'$', "Raincheck.Accounts.views.profile"),
 )
 
