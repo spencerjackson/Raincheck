@@ -1,10 +1,9 @@
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-
-
-from Raincheck.Excuses.models import Excuse, ExcuseVote
-
+from Raincheck.Excuses.models import Excuse, ExcuseVote, ExcuseForm
+from django import forms
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 @login_required
@@ -23,15 +22,18 @@ def vote(request, excuseID, excuse_is_liked):
 	#ExcuseVote.objects.filter(excuse__is=excuse).count()
 	return render_to_response('vote.html', {'excuse' : excuse, 'liked' : excuse.get_liked(),'disliked' : excuse.get_disliked()}, context_instance=RequestContext(request))
 
-def generate(request):
+def create(request):
 	if request.method == 'POST':
-		form = ContactForm(request.POST)
-	if form.is_valid():
-		excuse = get_object_or_404(Excuse)
-		excuse.save()
-		return HttpResponseRedirect('/excuse/')
-	else:
-		form = ContactForm()
-	return render_to_response('')
+		form = ExcuseForm(request.POST)
+		if form.is_valid():
+			form.save()
+		return render_to_response('create.html',{
 		'form' : form
+	}, context_instance=RequestContext(request))
+		#return HttpResponseRedirect('/account/profile')
+	else:
+		form = ExcuseForm()
+		return render_to_response('create.html',{
+		'form' : form
+	}, context_instance=RequestContext(request))
 
