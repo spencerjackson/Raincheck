@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from Raincheck import google, facebook
 from django.contrib.auth.decorators import login_required
 from Raincheck.Events.models import *
+from django.contrib import auth
 import datetime
 import random, json
 
@@ -106,3 +107,14 @@ def profile(request):
     #print dir(request.user)
     events = Event.objects.filter(creator = request.user)
     return render_to_response('profile.html', {"session": request.session, "events":events}, context_instance=RequestContext(request))
+
+def create_account(request):
+
+	if request.method == 'POST':
+		user = User.objects.create_user(username = request.session['username'], password=request.session['password2'])
+		user.save()
+		
+		auth.login(request, user)	
+		return redirect('/account/profile')
+	return render_to_response('new_account.html', {}, context_instance=RequestContext(request))
+

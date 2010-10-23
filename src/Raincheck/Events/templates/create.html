@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="">
+	{% csrf_token %}
+	<input type="text" name="title"/>
+	<input type="text" name="startDate" value="YYYY-MM-DD(-HH-MM)"/>
+	<input type="text" name="endDate" value="YYYY-MM-DD(-HH-MM)"/>
+	<input type="textarea" name="description" />
+	<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
