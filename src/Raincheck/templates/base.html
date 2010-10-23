@@ -11,7 +11,15 @@
 			<img src="/static/raincheck.png"/>
 		{% endblock %}
 		{%if authenticated %}
-			AUTHED
+			<form action="/accounts/login/" method="post">
+				{% csrf_token %}
+				<label for="username">Username: </label>
+				<input text="text" name="username" id="username"\>
+				<label for="password">Password: </label>
+				<input text="text" name="password" type="password" id="password"\>
+
+				<input type="submit" value="login" />
+			</form>
 		{% endif %}
 	</nav>
 	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
