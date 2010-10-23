@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     (r'^FBOAuth/dance/?', 'Raincheck.FacebookOAuth.views.dance'),
     
     (r'^/?$', 'Raincheck.views.index'),
-    (r'^accounts', include('Raincheck.Accounts.urls')),
+    (r'^account', include('Raincheck.Accounts.urls')),
 
     (r'', include('Raincheck.GAuth.urls')),
     #(r'^FBOAuth', include('Raincheck.FacebookOAuth.urls')),
