@@ -1,13 +1,15 @@
 <html>
 	<head>
-	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="/static/style.css" type="text/css" media=screen />
 		<title>{% block title %} Raincheck: The Anti-Social Network {% endblock %} </title>
 	<h1><b>Raincheck</b></h1>
 	<h2><small>The Anti-Social Network</small></h2>
 	</head>
 	<body>
-	<nav> 
-		{% block navigation %} 
+	<div id="page-wrap">
+	<div id="content">
+	<nav>
+		{% block navigation %}
 			<img src="/static/raincheck.png"/>
 		{% endblock %}
 		{%if authenticated %}
@@ -16,12 +18,10 @@
 	</nav>
 	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
 	<footer> {% block footer %}
-		<p class ="aligncenter">
-		<span id="copyrightDeclaration">&copy; Copyright 2010</span>
-		</p>
-		<p class ="aligncenter">
-		<span id="authors">Created by: Nohemi Fernandez, Lee Gao, Spencer Jackson, Joseph Vokt</span>
-		</p>
+		<p>&copy; Copyright 2010</p>
+		<p>Created by: Nohemi Fernandez, Lee Gao, Spencer Jackson, Joseph Vokt</p>
 	{% endblock %}</footer>
+	</div> <!-- #content -->
+	</div> <!-- #page-wrap -->
 	</body>
 </html>
