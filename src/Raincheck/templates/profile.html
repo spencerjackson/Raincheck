@@ -45,12 +45,21 @@
 				start: {{event.start_date}},
 				end: {{event.end_date}},
 				class: "{{event.provider}}",
+				eid: "{{event.id}}",
 			},
 			{% endfor %}
 		],
 		eventRender: function(event, element){
 			$(element).addClass(event.class);
-		}
+		},
+		eventClick: function(event, jsEvent, view) {
+	
+	        jQuery.get( "/account/conflict/"+event.eid+"/", function(data){
+	        	alert(data);
+	        })
+	
+	    }
+		
     })
 
 });

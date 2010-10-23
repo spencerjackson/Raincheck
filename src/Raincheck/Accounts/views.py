@@ -5,11 +5,24 @@ from Raincheck import google, facebook
 from django.contrib.auth.decorators import login_required
 from Raincheck.Events.models import *
 import datetime
-import random
+import random, json
 
 def normalize(date):
+    if not isinstance(date, str): return date
     d,t = date.split("T"); t = t.split("+")[0]
     return datetime.datetime(*[int(i) for i in d.split("-")+t.split(":")])
+
+def conflicts(events, avoid):
+    start,end = normalize(avoid["start_time"]), normalize(avoid["end_time"])    
+    mid = start+(end-start)/2
+    half = mid - start
+    list = []
+    for event in events:
+        s,e = normalize(event["start_time"]), normalize(event["end_time"])
+        m = s+(e-s)/2
+        h,dur = m-s,e-s
+        if (s <= start and e-start >= half) or (s <= mid and e >= end) or (s >= start and e <= end and dur >= half): list.append(event)
+    return list
 
 @login_required
 @facebook.validate(redirect = "/account/connect_fb/")
@@ -78,6 +91,15 @@ def connect_gcal(request):
         event.save()
         
     return HttpResponse(gcal)
+
+def convert_event(event):
+    return {"name":event.title, "start_time":event.start_time, "end_time":event.end_time}
+
+def conflict(request, event_id):
+    events = [convert_event(e) for e in Event.objects.filter(creator = request.user)]
+    avoid = convert_event(Event.objects.get(id=event_id))
+    conflist = conflicts(events, avoid)
+    return HttpResponse(str(conflist))
 
 @login_required
 def profile(request):

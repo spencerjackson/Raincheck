@@ -7,11 +7,14 @@
 <div class="postBottom">
 Raincheck is an anti-social web application that helps disgruntled people by compiling what may become the world's most comprehensive library of crappy excuses. This is actually an application submitted to the Yahoo HackU competition, enjoy.
 </div>
-
+<div class="clear"></div>
 {% for excuse in excuses.object_list %}
 	<div class="entry">
 		<a href="{{excuse.get_permalink}}">{{excuse.text}}</a>
-	</div>
+	</div><div class="postBottom">
+
+</div>
+<div class="clear"></div>
 {% endfor %}
 
 <div class="entry">
