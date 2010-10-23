@@ -11,10 +11,9 @@ urlpatterns = patterns('',
     (r'^accounts', include('Raincheck.Accounts.urls')),
 
     (r'^/?$', 'Raincheck.views.index'),
-    (r'^accounts', include('Raincheck.Accounts.urls')),
+    (r'^excuses', include('Raincheck.Excuses.urls')),
 
     (r'', include('Raincheck.GAuth.urls')),
-    #(r'^FBOAuth', include('Raincheck.FacebookOAuth.urls')),
     
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.path.abspath("./static")}),

@@ -17,3 +17,10 @@ class Excuse(models.Model):
     date = models.DateTimeField()
     def __str__(self):
       return self.author.username+" "+self.date.__str__()
+
+class ExcuseVote(models.Model):
+    user = models.OneToOneField(User, primary_key=True)
+    like = models.ManyToManyField(Excuse, related_name="likedBy")
+    dislike = models.ManyToManyField(Excuse, related_name="dislikedBy")
+    def __str__(self):
+      return self.user.username
