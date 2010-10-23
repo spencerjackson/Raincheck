@@ -8,10 +8,10 @@ urlpatterns = patterns('',
     # Example:
     (r'^FBOAuth', include('Raincheck.FacebookOAuth.urls')),
 
-    (r'^accounts', include('Raincheck.Accounts.urls')),
+    (r'^account', include('Raincheck.Accounts.urls')),
 
     (r'^/?$', 'Raincheck.views.index'),
-    (r'^excuses', include('Raincheck.Excuses.urls')),
+    (r'^excuse', include('Raincheck.Excuses.urls')),
 
     (r'', include('Raincheck.GAuth.urls')),
     

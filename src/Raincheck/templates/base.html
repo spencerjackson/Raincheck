@@ -12,7 +12,7 @@
 		{% block navigation %} 
 		{% endblock %}
 		{%if not authenticated %}
-			<form action="/accounts/login/" method="post">
+			<form action="/account/login/" method="post">
 				{% csrf_token %}
 				<label for="username">Username: </label>
 				<input text="text" name="username" id="username"\>
@@ -22,7 +22,7 @@
 				<input type="submit" value="login" />
 			</form>
 		{% else %}
-			<a href="/accounts/profile"> Go to your profile</a>
+			<a href="/account/profile"> Go to your profile</a>
 		{% endif %}
 	</nav>
 	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
