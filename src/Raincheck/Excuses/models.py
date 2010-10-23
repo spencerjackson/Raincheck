@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Excuse(models.Model):
     TYPE_OF_EXCUSE = (
-	('I', 'Illness')
-	('P', 'Personal')
-	('W', 'Work')
+	('I', 'Illness'),
+	('P', 'Personal'),
+	('W', 'Work'),
 	('F', 'Funny')
     )
     text = models.TextField()
