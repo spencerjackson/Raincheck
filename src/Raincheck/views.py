@@ -1,12 +1,10 @@
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.template import RequestContext
-
-from Raincheck.Excuses.models import Excuse
-
 from django.http import HttpResponse, HttpResponseRedirect
-import facebook, google
 
 from Raincheck.Excuses.models import Excuse
+
+import facebook, google
 
 def index(request):
 	excuses = Excuse.objects.all()[:5]
