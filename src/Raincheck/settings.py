@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.admin',
     'Raincheck.Excuses',
     'Raincheck.Events',
     'Raincheck.Locations',
