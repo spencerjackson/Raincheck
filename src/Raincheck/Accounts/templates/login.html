@@ -1,12 +1,13 @@
-{% extends "base.html" %}
-
-{% block content %}
-
+<html>
+ <head>
+  <title>Log in failed</title>
+ </head>
+ <body>
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
-
   <form action="" method="post">
+    {% csrf_token %} 
     <label for="username">User name:</label>
     <input type="text" name="username" value="" id="username">
     <label for="password">Password:</label>
@@ -15,6 +16,6 @@
     <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
-
-{% endblock %}
+</body>
+</html>
 

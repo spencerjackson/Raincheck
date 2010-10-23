@@ -1,15 +1,23 @@
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from Raincheck.Excuses.models import Excuse
 
 import facebook, google
 
 def index(request):
-	excuses = Excuse.objects.all()[:5]
-	return render_to_response('index.html', {'excuses': excuses}, context_instance=RequestContext(request))
+	paginator = Paginator(Excuse.objects.all(), 25)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		excuses = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		excuses = paginator.page(paginator.num_pages)
 
+	return render_to_response('index.html', {'excuses': excuses}, context_instance=RequestContext(request))
 
 @google.validate()
 @facebook.validate()

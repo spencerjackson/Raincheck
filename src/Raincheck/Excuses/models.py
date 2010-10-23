@@ -12,8 +12,17 @@ class Excuse(models.Model):
     text = models.TextField()
     type = models.CharField(max_length=1, choices=TYPE_OF_EXCUSE)
     author = models.ForeignKey(User)
-    like = models.IntegerField()
-    dislike = models.IntegerField()
     date = models.DateTimeField()
     def __str__(self):
       return self.author.username+" "+self.date.__str__()
+    def get_liked(self):
+      return self.likedBy.count()
+    def get_disliked(self):
+      return self.dislikedBy.count()
+
+class ExcuseVote(models.Model):
+    user = models.OneToOneField(User, primary_key=True)
+    like = models.ManyToManyField(Excuse, related_name="likedBy")
+    dislike = models.ManyToManyField(Excuse, related_name="dislikedBy")
+    def __str__(self):
+      return self.user.username
