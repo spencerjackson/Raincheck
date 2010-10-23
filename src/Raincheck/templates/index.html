@@ -8,6 +8,7 @@
 {% for excuse in excuses %}
 	<div class="excuse">
 		<blockquote>{{excuse.text}}</blockquote>
+		<span class="author">{{excuse.author.username}}</span>
 	</div>
 {% endfor %}
 {% endblock %}

@@ -10,3 +10,6 @@ class Event(models.Model):
     description = models.TextField()
     creator = models.ForeignKey(User)
     location = models.ForeignKey(Locations)
+    provider = models.CharField(max_length=200)
+    def __str__(self):
+        return self.title

@@ -5,7 +5,7 @@ client_id = "163856460308681"
 client_secret = "60ff1ecaeb3312c4a1bce1618251b914"
 
 def auth(request):
-    request.session.flush()
+    #request.session.flush()
     return HttpResponseRedirect("""https://graph.facebook.com/oauth/authorize?client_id=%s&redirect_uri=http://localhost:8080/FBOAuth/dance/&scope=user_events,friends_events,read_requests"""%client_id)
 
 def dance(request):
@@ -17,4 +17,4 @@ def dance(request):
     request.session["access_token"] = access_token
     request.session["expires"] = expires
     
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(request.session.get("redirect_uri", "/"))
