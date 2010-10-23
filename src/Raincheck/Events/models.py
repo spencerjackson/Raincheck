@@ -1,7 +1,6 @@
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
-from Raincheck.Locations.models import Locations
 import datetime
 class Event(models.Model):
     start_time = models.DateTimeField('when event starts')
@@ -9,7 +8,6 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     creator = models.ForeignKey(User)
-    location = models.CharField(max_length=200)
     provider = models.CharField(max_length=200)
     def __str__(self):
      return title+" at "+location+" by "+creator.username
