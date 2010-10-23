@@ -1,13 +1,18 @@
 <html>
 	<head>
 		<title>{% block title %} Raincheck: The Anti-Social Network {% endblock %} </title>
+	<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
 	<nav> {% block navigation %} <img src="media/raincheck.png"/> {% endblock %} </nav>
 	<div id="mainContent"> {% block content %} Well, fire the development team. This template was not overriden with content. {% endblock %} </div>
 	<footer> {% block footer %}
+		<p class ="aligncenter">
 		<span id="copyrightDeclaration">&copy; Copyright 2010</span>
+		</p>
+		<p class ="aligncenter">
 		<span id="authors">Created by: Nohemi Fernandez, Lee Gao, Spencer Jackson, Joseph Vokt</span>
+		</p>
 	{% endblock %}</footer>
 	</body>
 </html>
