@@ -72,6 +72,9 @@ TEMPLATE_DIRS = (
     'templates'
 )
 
+# User Profile object
+AUTH_PROFILE_MODULE = 'Accounts.UserProfile'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,5 +82,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'Raincheck.Excuses',
     'Raincheck.Events',
-    'Raincheck.Locations'
+    'Raincheck.Locations',
+    'Raincheck.Accounts'
 )
