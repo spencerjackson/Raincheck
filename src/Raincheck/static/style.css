@@ -1,0 +1,65 @@
+/*
+Theme Name: RainCheck
+Description: The Anti-Social Network
+Author: Nohemi Fernandez
+*/
+body {
+	line-height: 1;
+}
+
+hr {
+border-bottom: 1px solid #e4ecf7;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #f2f7fe;
+	font-size: 62.5%;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Droid Serif', Georgia, "Times New Roman", Times, serif;
+}
+
+nav {
+	width: 960px;
+	height: 450px;
+	margin-top: 0px;
+	border-right: 1px solid #e4ecf9;
+}
+
+#page-wrap {
+	background: #f7fafe url('images/contentbg.jpg') repeat-y;
+	width: 958px;
+	height: 100%;
+	float: left;
+	border-left: 1px solid #e4ecf9;
+	border-right: 1px solid #e4ecf9;
+	border-top: 1px solid #d2e1f1;
+	border-bottom: 1px solid #e4ecf9;rap {
+
+}
+
+#content {
+	float: left;
+	width: 638px;
+	height: 100%;
+	color: #2e2c6a;
+	border-right: 1px solid #f3f3ff;
+}
+
+footer {
+	width: 960px;
+	float: left;
+	color: #2e2c6a;
+	text-align: left;
+	padding: 20px 0px;
+}
+
+.alignright { float:right;}
+.alignleft { float:left; }
+.aligncenter { text-align: center; display: block; margin: 0 auto; }
