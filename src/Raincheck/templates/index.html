@@ -5,10 +5,26 @@
 
 <section>
 <h3>A sample of our user supplied responses</h3>
-{% for excuse in excuses %}
+{% for excuse in excuses.object_list %}
 	<div class="excuse">
 		<blockquote>{{excuse.text}}</blockquote>
 		<span class="author">{{excuse.author.username}}</span>
 	</div>
 {% endfor %}
+<div class="pagination">
+	<span class="step-links">
+		{% if excuses.has_previous %}
+			<a href="?page={{ excuses.previous_page_number }}">previous</a>
+		{% endif %}
+
+		<span class="current">
+			Page {{ excuses.number }} of {{ excuses.paginator.num_pages }}.
+		</span>
+
+		{% if excuses.has_next %}
+			<a href="?page={{ excuses.next_page_number }}">next</a>
+		{% endif %}
+	</span>
+
+</div>
 {% endblock %}
