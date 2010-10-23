@@ -10,3 +10,5 @@ class Event(models.Model):
     description = models.TextField()
     creator = models.ForeignKey(User)
     location = models.ForeignKey(Locations)
+    def __str__(self):
+     return title+" at "+location+" by "+creator.username
