@@ -5,19 +5,22 @@
 	<img src = "/static/pandaRaincheckFinal.jpg"/>
 </div>
 <div class="postBottom">
-Raincheck is an anti-social web application that helps disgruntled people by compiling what may become the world's most comprehensive library of crappy excuses. This is actually an application submitted to the Yahoo HackU competition, enjoy.
+<p> <i>RainCheck</i> is a scheduling and "social avoidance" application which integrates Google Calendar with Facebook Events to provide the optimal excuse for why you aren't going to that event you'd rather miss. In the unfortunate case your schedule shows no direct conflict with the event to be avoided, <i>RainCheck</i> equips you with a hefty array of excuses ranked and submitted by other users. </p>
+
+<p>This project was designed as an entry to the 2010 Yahoo! HackU Competition.</p>
 </div>
+<br/>
+<br/>
 <div class="clear"></div>
 {% for excuse in excuses.object_list %}
 	<div class="entry">
-		<a href="{{excuse.get_permalink}}">{{excuse.text}}</a>
-	</div><div class="postBottom">
+	<center><a href="{{excuse.get_permalink}}" style="text-shadow: 0px 0px 0px #E41E19 !important;">{{excuse.text}}</a></center> <br/>
+			</div><div class="postBottom">
+<a class = "alt" style="margin-right: 2.5em; font-size:12px; text-shadow:0 !important;" href="/excuse/{{excuse.pk}}/like">Like({{excuse.get_liked}})</a><a href="/excuse/{{excuse.pk}}/dislike" style="font-size:12px; color:#E41E19 !important;text-shadow: 0px 0px 6px #E41E19 !important;">Dislike({{excuse.get_disliked}})</a>
 
 </div>
 <div class="clear"></div>
 {% endfor %}
-
-<div class="entry">
 	<span class="step-links">
 		{% if excuses.has_previous %}
 			<a href="?page={{ excuses.previous_page_number }}">previous</a>
@@ -31,7 +34,6 @@ Raincheck is an anti-social web application that helps disgruntled people by com
 			<a href="?page={{ excuses.next_page_number }}">next</a>
 		{% endif %}
 	</span>
-</div>
 
 {% endblock %}
 {% block postcontent %}
