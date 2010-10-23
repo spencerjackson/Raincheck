@@ -1,5 +1,5 @@
 # Django settings for Rainchecking project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -69,7 +69,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'templates'
+    os.path.abspath("./templates"),
 )
 
 # User Profile object
@@ -80,8 +80,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.staticfiles',
     'Raincheck.Excuses',
     'Raincheck.Events',
     'Raincheck.Locations',
