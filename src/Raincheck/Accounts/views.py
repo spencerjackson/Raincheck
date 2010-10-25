@@ -5,12 +5,14 @@ from Raincheck import google, facebook
 from django.contrib.auth.decorators import login_required
 from Raincheck.Events.models import *
 from django.contrib import auth
+from Raincheck.Excuses.models import *
 import datetime
 import random, json
 from django.contrib import auth
 
 def normalize(date):
-    if not isinstance(date, str): return date
+    #print type(date)
+    if not isinstance(date, (str, unicode)): return date
     d,t = date.split("T"); t = t.split("+")[0]
     return datetime.datetime(*[int(i) for i in d.split("-")+t.split(":")])
 
@@ -30,24 +32,18 @@ def conflicts(events, avoid):
 @facebook.validate(redirect = "/account/connect_fb/")
 def connect_fb(request):
     fbdata = facebook.API("events", request.session["access_token"], "limit=50")
+    #print fbdata
     for e in fbdata:
+        #print request.user
         event = Event.objects.get_or_create(title = e["name"],
-                                            start_time = normalize(e["start_time"]),
-                                            end_time = normalize(e["end_time"]),
-                                            creator = request.user,
-                                            provider = "fb",
-                                            description = e["name"],
-                                            )[0]
-#        event.start_time = normalize(e["start_time"])
-#        event.end_time = normalize(e["end_time"])
-#        event.title = e["name"]
-#        event.creator = request.user
-#        event.location = Locations.objects.get_or_create(location = e["location"] if "location" in e else "")[0]
-#        event.provider = "fb"
-#        event.description = e["name"]
+            start_time = normalize(e["start_time"]),
+            end_time = normalize(e["end_time"]),
+            creator = request.user,
+            provider = "fb",
+            description = e["name"])
         event.save()
         
-    return HttpResponse(fbdata)
+    return HttpResponseRedirect("/account/profile/")
 
 @login_required
 @facebook.validate(redirect = "/account/connect_fbfriends/")
@@ -69,7 +65,7 @@ def connect_fbfriends(request):
         i += 1
         if i > 5: break
         
-    return HttpResponse(fbdata)
+    return HttpResponseRedirect("/account/profile/")
 
 @login_required
 @google.validate(redirect = "/account/connect_gcal/")
@@ -92,7 +88,7 @@ def connect_gcal(request):
 #        event.description = e["name"]
         event.save()
         
-    return HttpResponse(gcal)
+    return HttpResponseRedirect("/account/profile/")
 
 def convert_event(event):
     return {"name":event.title, "start_time":event.start_time, "end_time":event.end_time, "event":event}
@@ -106,11 +102,23 @@ def conflict(request, event_id):
     conflist = conflicts(events, avoid)
     if avoid in conflist:
         conflist.remove(avoid)
+    
+    strn = "<b>Conflicting Events:</b> <br>\n"
     for event in conflist:
         event["start_time"] = date_to_json(event["start_time"])
         event["end_time"] = date_to_json(event["end_time"])
         del event["event"]
-    return HttpResponse(json.dumps(conflist))
+        strn += event["name"] + "<br>\n"
+    
+    excuses = Excuse.objects.all()
+    try:
+        excuses = random.sample(excuses, 5)
+        strn += "<br><b>Possible Excuses:</b> <br>\n"
+        for excuse in excuses:
+            strn += excuse.text + "<br>\n"
+    except:
+        pass
+    return HttpResponse(strn)
 
 @login_required
 def profile(request):

@@ -14,10 +14,9 @@
 <div class="clear"></div>
 {% for excuse in excuses.object_list %}
 	<div class="entry">
-	<a href="{{excuse.get_permalink}}">{{excuse.text}}</a> <br/>
-		<a style="margin-right: 2.5em;"href="/excuse/{{excuse.pk}}/like">Like({{excuse.get_liked}})</a><a href="/excuse/{{excuse.pk}}/dislike">Dislike({{excuse.get_disliked}})</a>
-	</div><div class="postBottom">
-
+	<center><a href="{{excuse.get_permalink}}" style="text-shadow: 0px 0px 0px #E41E19 !important;">{{excuse.text}}</a></center> <br/>
+			</div><div class="postBottom">
+<a class = "alt" style="margin-right: 2.5em; font-size:12px; text-shadow:0 !important;" href="/excuse/{{excuse.pk}}/like">Like({{excuse.get_liked}})</a><a href="/excuse/{{excuse.pk}}/dislike" style="font-size:12px; color:#E41E19 !important;text-shadow: 0px 0px 6px #E41E19 !important;">Dislike({{excuse.get_disliked}})</a>
 </div>
 <div class="clear"></div>
 {% endfor %}

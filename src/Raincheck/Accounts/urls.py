@@ -12,6 +12,6 @@ urlpatterns = patterns('',
     (r'conflict/(?P<event_id>\d+)/?$', "Raincheck.Accounts.views.conflict"),
     (r'new_account/?$', 'Raincheck.Accounts.views.create_account'),
     
-    (r'$', "Raincheck.Accounts.views.profile"),
+    #(r'$', "Raincheck.Accounts.views.profile"),
 )
 

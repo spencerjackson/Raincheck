@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-
+	{% if form.subject.errors %}
+	<ol>
+		{% for error in form.subject.errors %}
+		<li><strong>{{error|escape }}</strong></li>
+		{% endfor %}
+	</ol>
+	{% endif %}
+	<div class="entry">
 	<form action="" method="post">
 	{% csrf_token %}
-	<label for="excuse">Excuse:</label>
-	<input type="textarea" name="excuse" value="" id="username">
-
+	<label for="excuse" style="display:block;">Submit your own excuse:</label>
+	<textarea name="excuse" value="" id="excuse" style="width:700px;height:200px;"></textarea>
 	<input type="submit" name="send" value="Submit" />
 	</form>
+	</div>
 {% endblock %}
